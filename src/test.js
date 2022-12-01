@@ -2,34 +2,21 @@ const request = require('request');
 
 
 //Senegal vs Netherlands is fixture id # 855734
+//league id 39 for premier league
 
 let options = {
   method: 'GET',
-  url: 'https://api-football-v1.p.rapidapi.com/v3/odds',
-  qs: {fixture: '855734'},
+  url: 'https://api.the-odds-api.com/v4/sports',
+  qs: {apiKey: '91c553bdf4ea2ce831d77831c7cb55a5'},
   headers: {
-    'X-RapidAPI-Key': 'ca6ea5e70amsh8dbbd2117d28b39p11b29fjsn59c0cc6f5756',
-    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com',
     useQueryString: true
   }
 };
 
 request(options, function (error, response, body) {
-	if (error) throw new Error(error);
-
-  const obj = JSON.parse(body);
-  const newObj = obj.response[0].bookmakers[0].bets[0]
-  console.log(newObj);
+	if (error) {
+    console.log(error)
+  };
+  const obj = JSON.parse(body)
+  console.log(obj)
 });
-
-options = {
-  method: 'GET',
-  url: 'https://api-football-v1.p.rapidapi.com/v3/odds',
-  qs: {fixture: '855734'},
-  headers: {
-    'X-RapidAPI-Key': 'ca6ea5e70amsh8dbbd2117d28b39p11b29fjsn59c0cc6f5756',
-    'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com',
-    useQueryString: true
-  }
-};
-
